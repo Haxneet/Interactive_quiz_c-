@@ -1,0 +1,8 @@
+﻿<maui:MauiWinUIApplication
+    x:Class="Interactive_quiz_by_harneet.WinUI.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:maui="using:Microsoft.Maui"
+    xmlns:local="using:Interactive_quiz_by_harneet.WinUI">
+
+</maui:MauiWinUIApplication>
