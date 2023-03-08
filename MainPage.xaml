@@ -1,19 +1,39 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Interactive_quiz_by_harneet.MainPage">
+<ContentPage
+    x:Class="Interactive_quiz_by_harneet.MainPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
 
-    <ScrollView>
-        <VerticalStackLayout
-            Spacing="25"
-            Padding="30,0"
-            VerticalOptions="Center">
 
-           
 
-            
+    <StackLayout>
+        <Label
+            Margin="10"
+            FontSize="Large"
+            Text="Quiz Title" />
+        <Label Margin="10" Text="Question Text" />
+        <StackLayout Margin="10" Orientation="Horizontal">
+            <Button Margin="5" Text="Option A" />
+            <Button Margin="5" Text="Option B" />
+            <Button Margin="5" Text="Option C" />
+            <Button Margin="5" Text="Option D" />
+        </StackLayout>
+        <StackLayout Margin="10" Orientation="Horizontal">
+            <Button Margin="5" Text="Quit" />
+            <Button Margin="5" Text="Next" />
+        </StackLayout>
+    </StackLayout>
 
-        </VerticalStackLayout>
-    </ScrollView>
+
+
+
+
+
+
+
+
+
+
+
 
 </ContentPage>
