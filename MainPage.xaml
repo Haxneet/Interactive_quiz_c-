@@ -19,8 +19,8 @@
             <Button  x:Name="BTN4 " Margin="5" Text="Option D" />
         </StackLayout>
         <StackLayout Margin="10" Orientation="Horizontal">
-            <Button Margin="5" Text="Quit" />
-            <Button Margin="5" Text="Next" />
+            <Button x:Name="Quit " Margin="5" Text="Quit" />
+            <Button x:Name="Next" Margin="5" Text="Next" />
         </StackLayout>
     </StackLayout>
 

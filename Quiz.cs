@@ -12,7 +12,8 @@ namespace Interactive_quiz_by_harneet
         private int _currentQuestionIndex = -1;
         private int _score = 0;
         private bool isFirstAttempt;
-
+        public int TotalQuestions;
+        public bool LastQuestion;
         public string Title { get; set; }
 
         public int Score { get { return _score; } private set { _score = value; } }
@@ -58,12 +59,13 @@ namespace Interactive_quiz_by_harneet
             _questionList.Add(new TrueFalseQuestion("The tallest mammal in the world is the elephant.", "false"));
             _questionList.Add(new TrueFalseQuestion("The currency of Japan is the yen.", "true"));
             _questionList.Add(new TrueFalseQuestion("The Statue of Liberty was a gift from France to the USA.", "true"));
+            TotalQuestions = _questionList.Count;
         }
 
         private Question GetQuestionWithoutAnswer()
         {
            
-                if (_currentQuestionIndex >= 0 && _currentQuestionIndex < _questionList.Count)
+                if (_currentQuestionIndex < _questionList.Count)
                 {
                     // get the current question
                     Question currentQuestion = _questionList[_currentQuestionIndex];
@@ -128,6 +130,8 @@ namespace Interactive_quiz_by_harneet
             {
                 isFirstAttempt = false;
             }
+            if (_currentQuestionIndex == _questionList.Count - 1)
+                LastQuestion = true;
         }
     }
 }
