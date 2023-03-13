@@ -13,10 +13,10 @@
             Text="Quiz Title" />
         <Label Margin="10" Text="Question Text" />
         <StackLayout Margin="10" Orientation="Horizontal">
-            <Button Margin="5" Text="Option A" />
-            <Button Margin="5" Text="Option B" />
-            <Button Margin="5" Text="Option C" />
-            <Button Margin="5" Text="Option D" />
+            <Button x:Name="BTN1"  Margin="5" Text="Option A" />
+            <Button x:Name="BTN2 " Margin="5" Text="Option B" />
+            <Button  x:Name="BTN3 " Margin="5" Text="Option C" />
+            <Button  x:Name="BTN4 " Margin="5" Text="Option D" />
         </StackLayout>
         <StackLayout Margin="10" Orientation="Horizontal">
             <Button Margin="5" Text="Quit" />

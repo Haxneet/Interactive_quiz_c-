@@ -12,5 +12,12 @@ namespace Interactive_quiz_by_harneet
         public int Points { get; set; }
         public bool CorrectAnswer { get; set; }
 
+
+        public Question(string questiontext, bool correctanswer)
+        {
+            QuestionText = questiontext;
+            CorrectAnswer = correctanswer;
+
+        }
     }
 }
