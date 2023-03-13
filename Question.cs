@@ -10,14 +10,9 @@ namespace Interactive_quiz_by_harneet
     {
         public string QuestionText { get; set; }
         public int Points { get; set; }
-        public bool CorrectAnswer { get; set; }
+        public string CorrectAnswer { get; set; }
 
 
-        public Question(string questiontext, bool correctanswer)
-        {
-            QuestionText = questiontext;
-            CorrectAnswer = correctanswer;
 
-        }
     }
 }

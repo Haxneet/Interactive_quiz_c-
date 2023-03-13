@@ -11,7 +11,7 @@
             Margin="10"
             FontSize="Large"
             Text="Quiz Title" />
-        <Label Margin="10" Text="Question Text" />
+        <Label x:Name="Question"  Margin="10" Text="Question Text" />
         <StackLayout Margin="10" Orientation="Horizontal">
             <Button x:Name="BTN1"  Margin="5" Text="Option A" />
             <Button x:Name="BTN2 " Margin="5" Text="Option B" />

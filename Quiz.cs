@@ -34,17 +34,17 @@ namespace Interactive_quiz_by_harneet
             _questionList.Add(
                 new MultipleChoiceQuestion(
                     "Which is the largest ocean in the world?",
-                     "Atlantic Ocean", "Indian Ocean", "Pacific Ocean", "Arctic Ocean" 
+                     "Atlantic Ocean", "Indian Ocean", "Pacific Ocean", "Arctic Ocean" ,
                     "Pacific Ocean"));
             _questionList.Add(
                 new MultipleChoiceQuestion(
                     "Which city is the capital of France?",
-                    "Paris", "London", "Madrid", "Rome" 
+                    "Paris", "London", "Madrid", "Rome" ,
                     "Paris"));
             _questionList.Add(
                 new MultipleChoiceQuestion(
                     "Which planet in our solar system is known as the Red Planet?",
-                    "Mars", "Venus", "Jupiter", "Saturn" 
+                    "Mars", "Venus", "Jupiter", "Saturn" ,
                     "Mars"));
             _questionList.Add(
                 new MultipleChoiceQuestion(
@@ -131,4 +131,4 @@ namespace Interactive_quiz_by_harneet
         }
     }
 }
-}
+
