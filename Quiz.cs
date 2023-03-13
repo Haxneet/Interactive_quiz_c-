@@ -11,6 +11,7 @@ namespace Interactive_quiz_by_harneet
         private List<Question> _questionList;
         private int _currentQuestionIndex = -1;
         private int _score = 0;
+        private bool isFirstAttempt;
 
         public string Title { get; set; }
 
@@ -28,72 +29,105 @@ namespace Interactive_quiz_by_harneet
             // Add 5 multiple choice questions
             _questionList.Add(
                 new MultipleChoiceQuestion(
-                    "Which country is the biggest in size?",
-                    new List<string>() { "USA", "Canada", "Russia", "China" },
-                    "Russia"));
+                    "Which country is the biggest in size?", "USA", "Canada", "Russia", "China" ,"Russia"
+                    ));
             _questionList.Add(
                 new MultipleChoiceQuestion(
                     "Which is the largest ocean in the world?",
-                    new List<string>() { "Atlantic Ocean", "Indian Ocean", "Pacific Ocean", "Arctic Ocean" },
+                     "Atlantic Ocean", "Indian Ocean", "Pacific Ocean", "Arctic Ocean" 
                     "Pacific Ocean"));
             _questionList.Add(
                 new MultipleChoiceQuestion(
                     "Which city is the capital of France?",
-                    new List<string>() { "Paris", "London", "Madrid", "Rome" },
+                    "Paris", "London", "Madrid", "Rome" 
                     "Paris"));
             _questionList.Add(
                 new MultipleChoiceQuestion(
                     "Which planet in our solar system is known as the Red Planet?",
-                    new List<string>() { "Mars", "Venus", "Jupiter", "Saturn" },
+                    "Mars", "Venus", "Jupiter", "Saturn" 
                     "Mars"));
             _questionList.Add(
                 new MultipleChoiceQuestion(
                     "Which instrument is used to measure air pressure?",
-                    new List<string>() { "Thermometer", "Barometer", "Hygrometer", "Anemometer" },
+                     "Thermometer", "Barometer", "Hygrometer", "Anemometer" ,
                     "Barometer"));
 
             // Add 5 true/false questions
-            _questionList.Add(new TrueFalseQuestion("The Great Wall of China is the longest wall in the world.", true));
-            _questionList.Add(new TrueFalseQuestion("The first man to walk on the moon was Neil Armstrong.", true));
-            _questionList.Add(new TrueFalseQuestion("The tallest mammal in the world is the elephant.", false));
-            _questionList.Add(new TrueFalseQuestion("The currency of Japan is the yen.", true));
-            _questionList.Add(new TrueFalseQuestion("The Statue of Liberty was a gift from France to the USA.", true));
+            _questionList.Add(new TrueFalseQuestion("The Great Wall of China is the longest wall in the world.", "true"));
+            _questionList.Add(new TrueFalseQuestion("The first man to walk on the moon was Neil Armstrong.", "true"));
+            _questionList.Add(new TrueFalseQuestion("The tallest mammal in the world is the elephant.", "false"));
+            _questionList.Add(new TrueFalseQuestion("The currency of Japan is the yen.", "true"));
+            _questionList.Add(new TrueFalseQuestion("The Statue of Liberty was a gift from France to the USA.", "true"));
         }
 
         private Question GetQuestionWithoutAnswer()
         {
-            if(_currentQuestionIndex >= 0 && _currentQuestionIndex < _questionList.Count)
-            {
-                Question q = _questionList[_currentQuestionIndex].CloneWithoutAnswer();
-                return q;
-            } else
-            {
-                throw new InvalidOperationException("No more questions available.");
-            }
-        }
+           
+                if (_currentQuestionIndex >= 0 && _currentQuestionIndex < _questionList.Count)
+                {
+                    // get the current question
+                    Question currentQuestion = _questionList[_currentQuestionIndex];
 
-        public Question GetNextQuestion()
+                    // create a new question object
+                    Question questionWithoutAnswer;
+
+                    if (currentQuestion is MultipleChoiceQuestion)
+                    {
+                    MultipleChoiceQuestion mcq = (MultipleChoiceQuestion)currentQuestion;
+                        questionWithoutAnswer = new MultipleChoiceQuestion(mcq.QuestionText, mcq.OptionA, mcq.OptionB, mcq.OptionC, mcq.OptionD, null);
+                    }
+                    else if (currentQuestion is TrueFalseQuestion)
+                    {
+                    TrueFalseQuestion tFalse = (TrueFalseQuestion)currentQuestion;
+                        questionWithoutAnswer = new TrueFalseQuestion(tFalse.QuestionText,null);
+                    }
+                    else
+                    {
+                        // unsupported question type
+                        return null;
+                    }
+
+                    return questionWithoutAnswer;
+                }
+                else
+                {
+                    // current question index is out of range
+                    return null;
+                }
+
+            }
+
+        
+       
+
+
+
+
+
+        
+
+    public Question GetNextQuestion()
         {
             _currentQuestionIndex++;
             return GetQuestionWithoutAnswer();
         }
 
-        public bool CheckUserAnswer(string userAnswer)
+        public void CheckUserAnswer(string answer)
         {
-            if(_currentQuestionIndex >= 0 && _currentQuestionIndex < _questionList.Count)
+            Question currentQuestion = _questionList[_currentQuestionIndex];
+
+            if (answer == currentQuestion.CorrectAnswer)
             {
-                bool isCorrect = _questionList[_currentQuestionIndex].CheckAnswer(userAnswer);
-                if(isCorrect)
+                if (isFirstAttempt)
                 {
-                    if(!_questionList[_currentQuestionIndex].IsAnsweredCorrectly)
-                    {
-                        Score++;
-                        _questionList[_currentQuestionIndex].IsAnsweredCorrectly = true;
-                    }
-                    return true;
+                    _score++;
+                    isFirstAttempt = false;
                 }
             }
-            return false;
+            else
+            {
+                isFirstAttempt = false;
+            }
         }
     }
 }
