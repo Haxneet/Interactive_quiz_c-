@@ -14,6 +14,7 @@ public partial class MainPage : ContentPage
     {
         InitializeComponent();
          quiz = new Quiz("Quiz");
+        Title.Text = quiz.Title;
         question = quiz.GetNextQuestion();
        Display(question);
     }
@@ -24,7 +25,7 @@ public partial class MainPage : ContentPage
 
         if (quiz.LastQuestion == true)
         {
-            Question.Text = "End of the quiz";
+            Question.Text = "End of the quiz. Start a new session to restart again !";
             DisplayAlert("Results", $"You got {quiz.Score} correct answers out of {quiz.TotalQuestions}.", "Ok");
 
 
@@ -53,7 +54,7 @@ public partial class MainPage : ContentPage
         }
         else
         {
-            button.BackgroundColor = Colors.Red;
+            button.BackgroundColor = Colors.OrangeRed;
             
         }
         
@@ -145,7 +146,7 @@ public partial class MainPage : ContentPage
     private void OnlyOnetry()
     {if (userAttempt)
         {
-            DisplayAlert("Next Question", $"You can only choose one option. Click on Next to go to Next question", "Ok");
+            DisplayAlert("Warning !", $"You can only try once. Click on 'Next' to go to Next question", "Ok");
         }
     }
 }

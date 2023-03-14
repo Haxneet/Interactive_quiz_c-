@@ -100,15 +100,6 @@ namespace Interactive_quiz_by_harneet
 
             }
 
-        
-       
-
-
-
-
-
-        
-
     public Question GetNextQuestion()
         {
             _currentQuestionIndex++;
