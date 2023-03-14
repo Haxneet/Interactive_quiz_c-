@@ -24,7 +24,7 @@ public partial class MainPage : ContentPage
 
         if (quiz.LastQuestion == true)
         {
-            // Show the final score
+            Question.Text = "End of the quiz";
             DisplayAlert("Results", $"You got {quiz.Score} correct answers out of {quiz.TotalQuestions}.", "Ok");
 
 
@@ -49,8 +49,7 @@ public partial class MainPage : ContentPage
         if (answer == question.CorrectAnswer)
         {
             button.BackgroundColor = Colors.Green;
-            quiz.GetNextQuestion();
-            //button.BackgroundColor = Colors.DarkBlue;
+           
         }
         else
         {
@@ -77,19 +76,36 @@ public partial class MainPage : ContentPage
     }
 
     private void BTN1_Clicked(object sender, EventArgs e)
-    { CheckUserOption(BTN1); }
+    {
+        OnlyOnetry();
+        if (!userAttempt) { CheckUserOption(BTN1); }
+         }
     private void BTN2_Clicked(object sender, EventArgs e)
-    { CheckUserOption(BTN2); }
+    {
+        OnlyOnetry();
+        if (!userAttempt) { CheckUserOption(BTN2); }
+    }
     private void BTN3_Clicked(object sender, EventArgs e)
-    { CheckUserOption(BTN3); }
+    {
+        OnlyOnetry();
+        if (!userAttempt) { CheckUserOption(BTN3); }
+    }
     private void BTN4_Clicked(object sender, EventArgs e)
-    { CheckUserOption(BTN4); }
+    {
+        OnlyOnetry();
+        if (!userAttempt) { CheckUserOption(BTN4); }
+    }
 
 
     private void Next_Clicked(object sender, EventArgs e)
     {
         
         question = quiz.GetNextQuestion();
+        userAttempt = false;
+        BTN1.BackgroundColor = Colors.White;
+        BTN2.BackgroundColor = Colors.White;
+            BTN3.BackgroundColor = Colors.White;
+        BTN4.BackgroundColor = Colors.White;
         Display(question);
         //CleanUI(Next);
         //BTN1.BackgroundColor = default(Color);
@@ -126,9 +142,11 @@ public partial class MainPage : ContentPage
         }
         
     }
-    private void CleanUI(Button button)
-    {
-        button.BackgroundColor = Colors.Blue;
+    private void OnlyOnetry()
+    {if (userAttempt)
+        {
+            DisplayAlert("Next Question", $"You can only choose one option. Click on Next to go to Next question", "Ok");
+        }
     }
 }
 
