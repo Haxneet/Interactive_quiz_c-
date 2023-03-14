@@ -13,14 +13,14 @@
             Text="Quiz Title" />
         <Label x:Name="Question"  Margin="10" Text="Question Text" />
         <StackLayout Margin="10" Orientation="Horizontal">
-            <Button x:Name="BTN1"  Margin="5" Text="Option A" />
-            <Button x:Name="BTN2 " Margin="5" Text="Option B" />
-            <Button  x:Name="BTN3 " Margin="5" Text="Option C" />
-            <Button  x:Name="BTN4 " Margin="5" Text="Option D" />
+            <Button x:Name="BTN1"  Margin="5" Text="Option A"  Clicked="BTN1_Clicked"/>
+            <Button x:Name="BTN2 " Margin="5" Text="Option B" Clicked="BTN2_Clicked" />
+            <Button  x:Name="BTN3 " Margin="5" Text="Option C" Clicked="BTN3_Clicked"/>
+            <Button  x:Name="BTN4 " Margin="5" Text="Option D" Clicked="BTN4_Clicked"/>
         </StackLayout>
         <StackLayout Margin="10" Orientation="Horizontal">
-            <Button x:Name="Quit " Margin="5" Text="Quit" />
-            <Button x:Name="Next" Margin="5" Text="Next" />
+            <Button x:Name="Quit " Margin="5" Text="Quit" Clicked="QuitButton_Clicked"/>
+            <Button x:Name="Next" Margin="5" Text="Next" Clicked="Next_Clicked"/>
         </StackLayout>
     </StackLayout>
 
